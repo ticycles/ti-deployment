@@ -1,0 +1,9 @@
+apiVersion: networking.gke.io/v1beta1
+kind: FrontendConfig
+metadata:
+ name: prod-springboot-frontend-config
+ namespace: prod
+spec:
+ redirectToHttps:
+   enabled: true
+   responseCodeName: PERMANENT_REDIRECT

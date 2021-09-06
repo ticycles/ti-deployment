@@ -1,0 +1,9 @@
+apiVersion: networking.gke.io/v1
+kind: ManagedCertificate
+metadata:
+  name: prod-ti-backend-ssl-cert
+  namespace: prod
+spec:
+  domains:
+    - prodapi.trackandtrail.in
+     

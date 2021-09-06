@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    # kubernetes.io/ingress.allow-http: "false"
+    kubernetes.io/ingress.global-static-ip-name: "prod-ti-mobile-backend-gke-ing-ext-ip"
+    networking.gke.io/managed-certificates: "prod-ti-backend-ssl-cert"
+    kubernetes.io/ingress.class: "gce"
+    networking.gke.io/v1beta1.FrontendConfig: "prod-springboot-frontend-config"
+  name: prod-ti-backend-ingress
+  namespace: prod
+spec:  
+ rules:
+ - host: prodapi.trackandtrail.in
+   http:
+     paths:
+     - path: /*
+       pathType: ImplementationSpecific
+       backend:
+         service:
+            name: prod-ti-backed-svc
+            port:
+                number: 80
