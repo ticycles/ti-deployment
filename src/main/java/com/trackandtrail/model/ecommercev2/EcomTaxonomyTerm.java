@@ -40,5 +40,8 @@ public class EcomTaxonomyTerm extends AuditableBase{
 	private String imageUrl;
 	
 	private Long tid;
+	
+	@Column(name = "type")
+	private String type;
 
 }

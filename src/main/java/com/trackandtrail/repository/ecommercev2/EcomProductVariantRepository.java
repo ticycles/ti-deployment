@@ -1,12 +1,13 @@
 package com.trackandtrail.repository.ecommercev2;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import com.trackandtrail.model.ecommercev2.EcomProductVariant;
-import com.trackandtrail.model.ecommercev2.EcomProductSpecification;
+
 
 public interface EcomProductVariantRepository extends JpaRepository<EcomProductVariant, Long> {
 
@@ -35,5 +36,10 @@ public interface EcomProductVariantRepository extends JpaRepository<EcomProductV
 	
 	@Query(nativeQuery = true, value = "select v.* from ecomm_variant v left join ecomm_product p on p.product_id = v.product_id where v.variant_id !=:variantId and p.category_id =:categoryId")
 	List<EcomProductVariant> findSimilarProducts(Long variantId,Long categoryId);
+
+	//EcomProductVariant findById();
+	
+	@Query(value = "select * from ecomm_variant u where u.variant_id = :variantId", nativeQuery = true)
+	Optional<EcomProductVariant> findById(Long variantId);
 
 }

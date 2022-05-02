@@ -37,16 +37,16 @@ public class CloudStorageController {
 			return new ResponseEntity<>(resp, HttpStatus.PAYLOAD_TOO_LARGE);
 		}
 
-		/*try {
+		try {
 			resp.setMsg(gcpFileService.upload(file));
 			return new ResponseEntity<Object>(resp, HttpStatus.OK);
 		} catch (IOException e) {
 			resp.setMsg(e.getMessage());
 			return new ResponseEntity<Object>(resp, HttpStatus.BAD_REQUEST);
-		} */
-		
-		resp.setMsg("https://wallpapercave.com/wp/wIYKEQP.jpg");
-		return new ResponseEntity<Object>(resp, HttpStatus.OK);
+		} 
+	
+//		resp.setMsg("https://wallpapercave.com/wp/wIYKEQP.jpg");
+//		return new ResponseEntity<Object>(resp, HttpStatus.OK);
 	}
 	
 	
