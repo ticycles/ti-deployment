@@ -38,35 +38,38 @@ public class DrTaxonomyController {
 	@Autowired
 	DrTaxonomyService taxonomy;
 
-//	@ApiOperation(value = "taxonomy", response = BaseResponseDTO.class)
-//	@GetMapping(value = "/taxonomy", produces = MediaType.APPLICATION_JSON_VALUE)
-//	public ResponseEntity<List<EcomTaxonomy>> getForEntity() throws Exception {
-//		return new ResponseEntity<List<EcomTaxonomy>>(taxonomy.getTaxonomy(), HttpStatus.OK);
-//
-//	}
-//
-//	
-//	@ApiOperation(value = "taxonomyTerm", response = BaseResponseDTO.class)
-//	@GetMapping(value = "/taxonomyTerm", produces = MediaType.APPLICATION_JSON_VALUE)
-//	public ResponseEntity<List<EcomTaxonomyTerm>> getTaxonomyTerm() throws Exception {
-//		return new ResponseEntity<List<EcomTaxonomyTerm>>(taxonomy.getTaxonomyTerm(), HttpStatus.OK);
-//
-//	}
-//	
-//	@ApiOperation(value = "ecomProduct", response = BaseResponseDTO.class)
-//	@GetMapping(value = "/ecomProduct", produces = MediaType.APPLICATION_JSON_VALUE)
-//	public ResponseEntity<List<EcomProduct>> getProduct() throws Exception {
-//		return new ResponseEntity<List<EcomProduct>>(taxonomy.getProduct(), HttpStatus.OK);
-//
-//	}
-//	
-//	@ApiOperation(value = "productVariant", response = BaseResponseDTO.class)
-//	@GetMapping(value = "/productVariant", produces = MediaType.APPLICATION_JSON_VALUE)
-//	public ResponseEntity<List<EcomProductVariant>> getProductVariant() throws Exception {
-//		return new ResponseEntity<List<EcomProductVariant>>(taxonomy.getProductVariant(), HttpStatus.OK);
-//
-//	}
-//	
+	@ApiOperation(value = "taxonomy", response = BaseResponseDTO.class)
+	@GetMapping(value = "/taxonomy", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<List<EcomTaxonomy>> getForEntity(String value) throws Exception {
+		return new ResponseEntity<List<EcomTaxonomy>>(taxonomy.getTaxonomy(value), HttpStatus.OK);
+
+	}
+
+	
+	@ApiOperation(value = "taxonomyTerm", response = BaseResponseDTO.class)
+	@GetMapping(value = "/taxonomyTerm", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<List<EcomTaxonomyTerm>> getTaxonomyTerm(@RequestParam String value) throws Exception {
+		return new ResponseEntity<List<EcomTaxonomyTerm>>(taxonomy.getTaxonomyTerm(value), HttpStatus.OK);
+
+	}
+	
+	@ApiOperation(value = "ecomProduct", response = BaseResponseDTO.class)
+	@GetMapping(value = "/ecomProduct", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<List<EcomProduct>> getProduct() throws Exception {
+		return new ResponseEntity<List<EcomProduct>>(taxonomy.getProduct(), HttpStatus.OK);
+
+	}
+	
+
+	@ApiOperation(value = "productVariant", response = BaseResponseDTO.class)
+	@GetMapping(value = "/productVariant", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<List<EcomProductVariant>> getProductVariant(@RequestParam String type,@RequestParam String sort,@RequestParam String limit,@RequestParam String offset) throws Exception {
+		
+		
+		return new ResponseEntity<List<EcomProductVariant>>(taxonomy.getProductVariant(type,sort,limit,offset), HttpStatus.OK);
+
+	}
+	
 	
 	@ApiOperation(value = "productStockAvailablity", response = BaseResponseDTO.class)
 	@GetMapping(value = "productStockAvailablity", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -78,11 +81,10 @@ public class DrTaxonomyController {
 	}
 	
 	
-//	@ApiOperation(value = "getAllordersList", response = BaseResponseDTO.class)
-//	@GetMapping(value = "/getAllordersList", produces = MediaType.APPLICATION_JSON_VALUE)
-//	public ResponseEntity<List<EcomOrders>> getAllordersList() throws Exception {
-//		return new ResponseEntity<List<EcomOrders>>(taxonomy.getAllordersList(), HttpStatus.OK);
-//
-//	}
+	@ApiOperation(value = "getAllordersList", response = BaseResponseDTO.class)
+	@GetMapping(value = "/getAllordersList", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<List<EcomOrders>> getAllordersList(@RequestParam String sort,@RequestParam String sortOrder,@RequestParam String limit,@RequestParam String offSet,@RequestParam String status) throws Exception {
+		return new ResponseEntity<List<EcomOrders>>(taxonomy.getAllordersList(sort,sortOrder,limit,offSet,status), HttpStatus.OK);
+	}
 	
 }

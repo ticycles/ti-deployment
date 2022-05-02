@@ -1,5 +1,8 @@
 package com.trackandtrail.model.ecommercev2;
 
+import java.util.List;
+import java.util.Optional;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -61,7 +64,7 @@ public class EcomProductVariant extends AuditableBase {
 	private String productUrl;
 	private Integer quantity;
 	private Double discountPercentage;
-	private Double discountAmount;
+	private Boolean discountAmount;
 	private String image1;
 	private String image2;
 	private String image3;
@@ -85,5 +88,10 @@ public class EcomProductVariant extends AuditableBase {
 	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "size_term_id")
 	private EcomTaxonomyTerm sizeTermId;
+	
+	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@JoinColumn(name = "tid")
+	private EcomTaxonomyTerm tid;
+    
 
 }

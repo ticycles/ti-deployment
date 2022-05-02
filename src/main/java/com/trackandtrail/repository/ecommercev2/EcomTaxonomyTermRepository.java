@@ -10,10 +10,6 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
 import com.trackandtrail.dto.ecommercev2.EcomTaxonomyTermDto;
-import com.trackandtrail.dto.ecommercev2.EcommerceTaxonomyDto;
-import com.trackandtrail.dto.ecommercev2.EcommerceTaxonomyTermDto;
-import com.trackandtrail.model.bikerentalmanagement.BikeRentalBooking;
-import com.trackandtrail.model.ecommercev2.EcomTaxonomy;
 import com.trackandtrail.model.ecommercev2.EcomTaxonomyTerm;
 
 public interface EcomTaxonomyTermRepository extends JpaRepository<EcomTaxonomyTerm, Long>{
@@ -24,6 +20,10 @@ public interface EcomTaxonomyTermRepository extends JpaRepository<EcomTaxonomyTe
 	
 	Optional<EcomTaxonomyTerm> findByTid(Long tid);
 	
+	
+
+	@Query(value = "select * from ecomm_taxonomy_term u where u.tid = :tid", nativeQuery = true)
+	Optional<EcomTaxonomyTerm> findByEcomTaxonmyTid(Long tid);
 	
 //	@Query(nativeQuery=true,value="delete from ecomm_taxonomy_term b where b.tid=:tid")
 //	EcomTaxonomyTerm findByTaxonmomyTermByTid(Long tid);

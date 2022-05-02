@@ -41,7 +41,7 @@ public class EcomProductVariantDto extends AuditableBase{
 
 	private Double discountPercentage;
 
-	private Double discountAmount;
+	private Boolean discountAmount;
 
 	private String image1;
 
